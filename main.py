@@ -1,7 +1,7 @@
-from _ml import MLAgent, train, save, load, train_and_plot
-from _core import is_winner, opponent, start
-
-
+from _ml import MLAgent,  load, validate, RandomAgent, plot_validation
+from _core import is_winner, opponent
+ 
+ 
 class MyAgent(MLAgent):
     def evaluate(self, board):
         if is_winner(board, self.symbol):
@@ -13,9 +13,11 @@ class MyAgent(MLAgent):
         return reward
     
  
-my_agent = MyAgent()
 my_agent = load('MyAgent_3000')
- 
 my_agent.learning = False
  
-start(player_x=my_agent)
+validation_agent = RandomAgent()
+ 
+validation_result = validate(agent_x=my_agent, agent_o=validation_agent, iterations=100)
+ 
+plot_validation(validation_result)
