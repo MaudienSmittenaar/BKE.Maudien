@@ -1,21 +1,26 @@
 from _ml import MLAgent, train, save, load, train_and_plot, RandomAgent, validate, plot_validation
- from _core import is_winner, opponent, start
 
- import random
- @@ -13,16 +13,53 @@ def evaluate(self, board):
-         else:
-             reward = 0
-         return reward
+from _core import is_winner, opponent, start
 
-
-
+import random
+ 
+ 
+class MyAgent(MLAgent):
+   def evaluate(self, board):
+      if is_winner(board, self.symbol):
+       reward = 1
+      elif is_winner(board,
+ opponent[self.symbol]):
+       reward = -1
+      else:
+        reward = 0
+      return reward
 
 
  train_agent = True
  play_agent = False
  score_agent = True
  graph = False
-
 
 
  if train_agent == True:
