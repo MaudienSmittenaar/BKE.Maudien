@@ -21,26 +21,22 @@ class MyAgent(MLAgent):
 #3: train een agent
 #4: pilot piechart
 #5: kijk welke hyperparameters de beste A.I. geven
-print("1: Speel met 2 spelers \n 2: Speel tegen een getrainde computer \n 3: Train een A.I. \n 4: Check hoe goed bepaalde agent is \n 5: Testen hoe goed bepaalde hyperparameter combinaties werken. \n Kies wat je wilt spelen:")
-choice = input()
+play = "y"
+while play == "y":
+   print("\n 1: Speel met 2 spelers \n 2: Speel tegen een getrainde computer \n 3: Train een AI \n 4: Controleer hoe goed een bepaalde agent is \n 5: Test hoe goed bepaalde hyperparameter combinaties werken \n Kies wat u wilt spelen: \n")
+   choice = input()
 
-train_agent = False
-play_agent = False
-score_agent = False
-graph = False
 
 
 if choice == '1':
   start()
 
 if choice == '2':
-  print("Tegen welke agent wilt u spelen? Wenst u tegen de agent van dit programma te willen spelen, vul dan agent1 in")
+  print("Tegen welke agent wilt u spelen? Wenst u tegen de agent van dit programma te willen spelen, vul dan 'agent1' in")
   play_agent = input()
 
   my_agent = load(play_agent)
-
   my_agent.learning = False
-
   start(player_x=my_agent)    
 
 if choice == '3':
@@ -94,7 +90,10 @@ if choice == "5":
 
    train_and_plot(
        agent=my_agent,
-       validation_agent=random_agent,
+    validation_agent=random_agent,
        iterations=30,
        trainings=100,
        validations=1000)
+
+print("Wilt u doorgaan? (y/n)")
+play = input()
