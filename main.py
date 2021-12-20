@@ -34,7 +34,7 @@ if choice == '1':
   start()
 
 if choice == '2':
-  print("Tegen welke agent wil je spelen? Als je tegen de agent van dit programma wilt spelen, vul in: agent1")
+  print("Tegen welke agent wilt u spelen? Wenst u tegen de agent van dit programma te willen spelen, vul dan agent1 in")
   play_agent = input()
 
   my_agent = load(play_agent)
