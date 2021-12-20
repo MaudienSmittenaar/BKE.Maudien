@@ -1,39 +1,58 @@
-import random
-from bke import EvaluationAgent, start
+from _ml import MLAgent, train, save, load, train_and_plot, RandomAgent, validate, plot_validation
+ from _core import is_winner, opponent, start
 
-#class MyRandomAgent(EvaluationAgent):
- # def evaluate(self, board, my_symbol, opponent_symbol):
-  #  return random.randint(1, 500)
-  
-class MyCapableAgent(EvaluationAgent):
-  def getBoardCopy(board):
-    boardCopy = []
-    for i in board:
-       boardCopy.append(i)
-     return boardCopy
-
-   def isWinner(bo, le):
-     return ((bo[7] == le and bo[8] == le and bo[9] == le) or
-     (bo[4] == le and bo[5] == le and bo[6] == le) or
-     (bo[1] == le and bo[2] == le and bo[3] == le) or
-     (bo[7] == le and bo[4] == le and bo[1] == le) or
-     (bo[8] == le and bo[5] == le and bo[2] == le) or
-     (bo[9] == le and bo[6] == le and bo[3] == le) or
-     (bo[7] == le and bo[5] == le and bo[3] == le) or
-     (bo[9] == le and bo[5] == le and bo[1] == le))
-
-   def evaluate(self, board, my_symbol, opponent_symbol):
-     for i in range (0,9):
-       boardCopy = MyCapableAgent.getBoardCopy(board)
-       if boardCopy[i] != None:
-         boardCopy[i] = my_symbol
-         if MyCapableAgent.isWinner(boardCopy, my_symbol):
-           return i
-
-     return random.randint(0,8)
+ import random
+ @@ -13,16 +13,53 @@ def evaluate(self, board):
+         else:
+             reward = 0
+         return reward
 
 
 
- #my_random_agent = MyRandomAgent()
- my_agent = MyCapableAgent()
-start(player_o = my_agent)
+
+
+ train_agent = True
+ play_agent = False
+ score_agent = True
+ graph = False
+
+
+
+ if train_agent == True:
+   my_agent = MyAgent(alpha=0.1, epsilon=0.8)
+
+   train(my_agent, 30000)
+
+   save(my_agent, 'MyAgent_30000')
+
+
+ if play_agent == True:
+   my_agent = load('MyAgent_30000')
+
+   my_agent.learning = False
+
+   start(player_x=my_agent)    
+
+ if score_agent == True:
+   my_agent = load('MyAgent_30000')
+   my_agent.learning = False
+
+   validation_agent = RandomAgent()
+
+   validation_result = validate(agent_o=my_agent, agent_x=validation_agent, iterations=100)
+
+   plot_validation(validation_result)
+
+
+ if graph == True:
+   random.seed(1)
+
+   my_agent = MyAgent(alpha=0.2, epsilon=0.8)
+   random_agent = RandomAgent()
+
+   train_and_plot(
+       agent=my_agent,
+       validation_agent=random_agent,
+       iterations=50,
+       trainings=100,
+       validations=1000)
