@@ -21,6 +21,8 @@ class MyAgent(MLAgent):
 #3: train een agent
 #4: pilot piechart
 #5: kijk welke hyperparameters de beste A.I. geven
+itterate = 150
+training = 500000
 play = "y"
 while play == "y":
    print("\n 1: Speel met 2 spelers \n 2: Speel tegen een getrainde computer \n 3: Train een AI \n 4: Controleer hoe goed een bepaalde agent is \n 5: Test hoe goed bepaalde hyperparameter combinaties werken \n Kies wat u wilt spelen: \n")
@@ -42,27 +44,31 @@ if choice == '2':
 if choice == '3':
   print("Hoe wil je je agent noemen?")
   name = input()
-
-  print("Hoe vaak wil je jouw agent trainen?")
-  training = int(input())
+  while training >= 500000:
+    print("Hoe vaak moet uw agent getraind worden? Maximaal 500000")
+    training = int(input())
 
   print("Wilt u de hyperparameters aanpassen? (y/n)")
   if input() == "y":
     print("Uitleg voor hyperparameters tussen 1 en 0")
     chosen_alpha = float(input())
     chosen_epsilon = float(input())
-    MyAgent(alpha=chosen_alpha, epsilon=chosen_epsilon)
+    my_agent = 
+MyAgent(alpha=alpha_chosen, epsilon=chosen_epsilon)
   else: 
     my_agent = MyAgent()
 
   train(my_agent, training)
   save(my_agent, name)
 
+  print("\nJe agent is getraind en opgeslagen onder: " + name)
+
   if choice == '4':
-   print("Hoe heet de agent?")
-   name = input()
-   print("Wil je dat uw agent X of O is? Voor uw informatie: X begint altijd")
-   symbol = input()
+    print("Als de grafiek getekend is, klik het weg om verder te gaan")
+    print("Hoe heet de agent?")
+    name = input()
+    print("Wil je dat uw agent X of O is? Voor uw informatie: X begint altijd")
+    symbol = input()
 
    my_agent = load(name)
    my_agent.learning = False
@@ -79,11 +85,19 @@ plot_validation(validation_result)
 
 
 if choice == "5":
+  print("Als de grafiek getekend is, klik het weg om verder te gaan")
+
    random.seed(1)
 
    print("Uitleg voor hyperparameters tussen 1 en 0")
+   print("alpha:")
    chosen_alpha = float(input())
+   print("epsilon:")
    chosen_epsilon = float(input())
+
+   while itterate >= 51:
+     print("Hoeveel iteraties wil je doen? (max 50)")
+     itterate = int(input())
 
    my_agent = MyAgent(alpha=chosen_alpha, epsilon=chosen_epsilon)
    random_agent = RandomAgent()
@@ -92,7 +106,7 @@ if choice == "5":
        agent=my_agent,
     validation_agent=random_agent,
        iterations=30,
-       trainings=100,
+       trainings=itterate,
        validations=1000)
 
 print("Wilt u doorgaan? (y/n)")
