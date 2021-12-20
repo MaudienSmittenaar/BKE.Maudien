@@ -16,40 +16,45 @@ class MyAgent(MLAgent):
         reward = 0
       return reward
 
+print("1: 2 spelers \n 2: speel tegen een getrainde computer \n 3: speel tegen een getrainde AI \n 4: train een AI en kijk hoe goed die het doet \n Kies wat je wilt spelen:")
+choice = input()
 
- train_agent = True
- play_agent = False
- score_agent = True
- graph = False
-
-
- if train_agent == True:
-   my_agent = MyAgent(alpha=0.1, epsilon=0.8)
-
-   train(my_agent, 30000)
-
-   save(my_agent, 'MyAgent_30000')
+train_agent = False
+play_agent = False
+score_agent = False
+graph = False
 
 
- if play_agent == True:
+if choice == '1':
+  start()
+
+if choice == '2':
+  my_agent = MyAgent()
+
+  train(my_agent, 30000)
+
+  save(my_agent, 'MyAgent_30000')
+
+
+if choice == '2':
    my_agent = load('MyAgent_30000')
 
    my_agent.learning = False
 
    start(player_x=my_agent)    
 
- if score_agent == True:
+if score_agent == True:
    my_agent = load('MyAgent_30000')
    my_agent.learning = False
 
    validation_agent = RandomAgent()
 
-   validation_result = validate(agent_o=my_agent, agent_x=validation_agent, iterations=100)
+   validation_result = validate(x=my_agent, agent_o=validation_agent, iterations=100)
 
    plot_validation(validation_result)
 
 
- if graph == True:
+if graph == True:
    random.seed(1)
 
    my_agent = MyAgent(alpha=0.2, epsilon=0.8)
