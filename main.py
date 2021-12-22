@@ -25,7 +25,7 @@ itterate = 150
 training = 500000
 play = "y"
 while play == "y":
-  print("\n 1: Speel met 2 spelers \n 2: Speel tegen een getrainde computer \n 3: Train een AI \n 4: Controleer hoe goed een bepaalde agent is \n 5: Test hoe goed bepaalde hyperparameter combinaties werken \n Kies wat u wilt spelen: \n")
+  print("\n 1: Spelen met 2 spelers \n 2: Spelen tegen een zeer goed getrainde computer \n 3: A.I. trainen \n 4: Controleer hoe goed een bepaalde agent is \n 5: Toetsen hoe goed combinaties van bepaalde hyperparameter werken \n Maak uw keuze: \n")
   choice = input()
 
 
@@ -34,7 +34,7 @@ while play == "y":
     start()
 
   if choice == '2':
-    print("Tegen welke agent wilt u spelen? Wenst u tegen de agent van dit programma te willen spelen, vul dan 'agent1' in")
+    print("Tegen welke agent wenst u spelen? Wanneer u tegen de agent van dit programma wilt spelen, vul dan 'agent1'in.")
     play_agent = input()
 
     my_agent = load(play_agent)
@@ -42,13 +42,13 @@ while play == "y":
     start(player_x=my_agent)    
 
   if choice == '3':
-    print("Hoe wil je je agent noemen?")
+    print("Hoe wilt u uw agent noemen?")
     name = input()
     while training >= 500000:
-      print("Hoe vaak moet uw agent getraind worden? Maximaal 500000")
+      print("Hoe vaak wilt u uw agent trainen? Dit is maximaal 500000 keer")
       training = int(input())
 
-    print("Wilt u de hyperparameters aanpassen? (y/n)")
+    print("Zou u de hyperparameters willen aanpassen? (y/n)")
     if input() == "y":
       print("Uitleg voor hyperparameters tussen 1 en 0")
       chosen_alpha = float(input())
@@ -60,13 +60,13 @@ while play == "y":
     train(my_agent, training)
     save(my_agent, name)
 
-    print("\nJe agent is getraind en opgeslagen onder: " + name)
+    print("\nUw agent is succesvol getraind en hij is nu opgeslagen onder: " + name)
 
   if choice == '4':
-    print("Als de grafiek getekend is, klik het weg om verder te gaan")
-    print("Hoe heet de agent?")
+    print("Heeft u de grafiek goed bekeken? Dan kunt u verder gaan door de grafiek weg te klikken.")
+    print("Hoe wilt u uw agent noemen?")
     name = input()
-    print("Wil je dat uw agent X of O is? Voor uw informatie: X begint altijd")
+    print("Wilt u voor X of voor O spelen? Voor uw informatie: X begint altijd")
     symbol = input()
 
     my_agent = load(name)
@@ -95,7 +95,7 @@ while play == "y":
     chosen_epsilon = float(input())
 
     while itterate >= 51:
-      print("Hoeveel iteraties wil je doen? (max 50)")
+      print("Hoeveel iteraties wil je doen? U kunt maximaal 50 iteraties kiezen.")
       itterate = int(input())
 
     my_agent = MyAgent(alpha=chosen_alpha, epsilon=chosen_epsilon)
@@ -108,5 +108,5 @@ while play == "y":
       trainings=100,
       validations=1000)
 
-  print("Wilt u doorgaan? (y/n)")
+  print("Wilt u verder gaan? (y/n)")
   play = input()
