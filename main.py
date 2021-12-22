@@ -98,15 +98,15 @@ while play == "y":
       print("Hoeveel iteraties wil je doen? (max 50)")
       itterate = int(input())
 
-  my_agent = MyAgent(alpha=chosen_alpha, epsilon=chosen_epsilon)
-  random_agent = RandomAgent()
+    my_agent = MyAgent(alpha=chosen_alpha, epsilon=chosen_epsilon)
+    random_agent = RandomAgent()
 
-  train_and_plot(
-       agent=my_agent,
-    validation_agent=random_agent,
-       iterations=30,
-       trainings=itterate,
-       validations=1000)
+    train_and_plot(
+      agent=my_agent,
+      validation_agent=random_agent,
+      iterations=itterate,
+      trainings=100,
+      validations=1000)
 
   print("Wilt u doorgaan? (y/n)")
   play = input()
