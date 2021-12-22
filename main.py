@@ -108,5 +108,8 @@ while play == "y":
       trainings=100,
       validations=1000)
 
-  print("Wilt u verder gaan? (y/n)")
+  print("Wilt u verder gaan? (Voor ja type: 'y'. Voor nee type: 'n')")
   play = input()
+
+play = "n"
+print("Dankjewel voor het spelen! Tot ziens.")
