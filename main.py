@@ -45,25 +45,17 @@ while play == "y":
     print("Hoe wilt u uw agent noemen?")
     name = input()
     while training >= 500000:
-      print("Hoe vaak wilt u uw agent trainen? Dit is maximaal 500000 keer")
+      print("Hoe vaak wilt u uw agent trainen? Dit is maximaal 500000 keer. Kies een getal tussen 1 en 500000: ")
       training = int(input())
-
-    print("Zou u de hyperparameters willen aanpassen? (y/n)")
-    if input() == "y":
-      print("Uitleg voor hyperparameters tussen 1 en 0")
-      chosen_alpha = float(input())
-      chosen_epsilon = float(input())
-      my_agent = MyAgent(alpha=chosen_alpha, epsilon=chosen_epsilon)
-    else: 
+      print("Dankuwel voor het invullen. Wacht even tot de uitslagen van uw training worden opgeslagen. Dit kan even duren.")
       my_agent = MyAgent()
-
-    train(my_agent, training)
-    save(my_agent, name)
+      train(my_agent, training)
+      save(my_agent, name)
 
     print("\nUw agent is succesvol getraind en hij is nu opgeslagen onder: " + name)
 
   if choice == '4':
-    print("Heeft u de grafiek straks goed bekeken? Dan kunt u verder gaan door de grafiek weg te klikken.")
+    print("Heeft u de grafiek straks goed bekeken? Dan kunt u verder gaan door de grafiek weg te klikken op het kruisje rechtsbovenin.")
     print("Hoe wilt u uw agent noemen? Als u zelf nog geen agent heeft getraind kunt u 'agent1' trainen, anders de door uw genoemde agent.")
     name = input()
     print("Wilt u voor X of voor O spelen? Voor uw informatie: X begint altijd")
@@ -84,13 +76,14 @@ while play == "y":
 
 
   if choice == "5":
-    print("Als de grafiek getekend is, klik het weg om verder te gaan")
+    print("Als de grafiek getekend is, kunt u op het kruisje rechtsboven klikken om verder te gaan")
 
     random.seed(1)
 
-    print("Uitleg voor hyperparameters tussen 1 en 0")
+    print("Kies een alpha tussen 0 en 1. Gebruik een punt (.) wanneer u een komma getal kiest.")
     print("alpha:")
     chosen_alpha = float(input())
+    print("Kies een epsilon tussen 0 en 1. Gebruik een punt (.) wanneer u een komma getal kiest.")
     print("epsilon:")
     chosen_epsilon = float(input())
 
