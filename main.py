@@ -16,11 +16,6 @@ class MyAgent(MLAgent):
         reward = 0
       return reward
 
-#1: 2 spelers
-#2: speel tegen een getrainde computer
-#3: train een agent
-#4: pilot piechart
-#5: kijk welke hyperparameters de beste A.I. geven
 itterate = 150
 training = 500000
 play = "y"
