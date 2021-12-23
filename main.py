@@ -20,7 +20,7 @@ itterate = 150
 training = 500000
 play = "y"
 while play == "y":
-  print("\n 1: Spelen met 2 spelers \n 2: Spelen tegen een zeer goed getrainde computer \n 3: A.I. trainen \n 4: Controleer hoe goed een bepaalde agent is \n 5: Toetsen hoe goed combinaties van bepaalde hyperparameter werken \n Maak uw keuze: \n")
+  print("Welkom bij Boter, Kaas en Eieren! Hieronder vindt u het keuzemenu van de verschillende opties die u kunt kiezen.\n 1: Spelen met 2 spelers \n 2: Spelen tegen een zeer goed getrainde computer \n 3: A.I. trainen \n 4: Controleer hoe goed een bepaalde agent is \n 5: Toetsen hoe goed combinaties van bepaalde hyperparameter werken \n Maak uw keuze: \n")
   choice = input()
 
 
