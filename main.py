@@ -47,7 +47,7 @@ while play == "y":
       train(my_agent, training)
       save(my_agent, name)
 
-    print("\nUw agent is succesvol getraind en hij is nu opgeslagen onder: " + name)
+    print("\nDankuwel voor het wachten! Uw agent is succesvol getraind en hij is nu opgeslagen onder: " + name)
 
   if choice == '4':
     print("Als u straks de grafiek goed heeft kunnen bekijken dan kunt u verder gaan door de grafiek weg te klikken op het kruisje rechtsbovenin.")
