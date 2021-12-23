@@ -50,8 +50,8 @@ while play == "y":
     print("\nUw agent is succesvol getraind en hij is nu opgeslagen onder: " + name)
 
   if choice == '4':
-    print("Heeft u de grafiek straks goed bekeken? Dan kunt u verder gaan door de grafiek weg te klikken op het kruisje rechtsbovenin.")
-    print("Hoe wilt u uw agent noemen? Als u zelf nog geen agent heeft getraind kunt u 'agent1' trainen, anders de door uw genoemde agent.")
+    print("Als u straks de grafiek goed heeft kunnen bekijken dan kunt u verder gaan door de grafiek weg te klikken op het kruisje rechtsbovenin.")
+    print("Welke agent wilt u controleren? Als u zelf nog geen agent heeft getraind kunt u 'agent1' trainen, anders de door uw genoemde agent.")
     name = input()
     print("Wilt u voor X of voor O spelen? Voor uw informatie: X begint altijd")
     symbol = input()
